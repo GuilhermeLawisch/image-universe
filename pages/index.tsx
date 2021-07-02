@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { GetStaticProps, GetStaticPaths } from 'next'
 
 type IData = {
   title?: string;
@@ -9,16 +10,7 @@ type IData = {
   date?: string;
 }
 
-export default function Home() {
-  const [datas, setDatas] = useState<IData>({}) 
-
-  useEffect(() => {
-    const headers = { 'Content-Type': 'application/json' }
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_ENV_LOCAL_VARIABLE}`, { headers })
-        .then(response => response.json())
-        .then(data => setDatas( data ));
-  }, [])
-
+export default function Home({ datas }:any) {
   return (
     <>
       <Head>
@@ -41,4 +33,16 @@ export default function Home() {
       
     </>
   )
+}
+
+export const getStaticProps:GetStaticProps = async (ctx) => {
+  const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_ENV_LOCAL_VARIABLE}`)
+  const datas = await res.json()
+
+  return {
+    props: {
+      datas
+    },
+    revalidate: 60 * 60 * 6     // 6 HOURS
+  }
 }
