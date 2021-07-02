@@ -27,10 +27,13 @@ h1 {
   color: rgba(255, 255, 255, 1);
 }
 
-img {
+a {
+  height: 65vh;
+}
+
+.image {
   margin: auto;
   border-radius: 10em / 7em;
-  height: 65vh;
 }
 
 p,
@@ -48,7 +51,7 @@ span {
     padding: 5px;
   }
 
-  img {
+  .image {
     margin: auto;
     border-radius: 4em / 3em;
     width: 90vw;
