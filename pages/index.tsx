@@ -24,9 +24,8 @@ export default function Home({ datas }:any) {
           <Image src={ datas.url } alt={ datas.url } width="1000" height="600" className="image"/>
         </a>
         <p>{ datas.explanation }</p>
-        <span>{ datas.date }</span>
+        <span>{ datas.date[8] + datas.date[9] + ' / ' + datas.date[5] + datas.date[6] + ' / ' + datas.date[0] + datas.date[1] + datas.date[2] + datas.date[3] }</span>
       </main>
-      
     </>
   )
 }
@@ -39,6 +38,6 @@ export const getStaticProps:GetStaticProps = async (ctx) => {
     props: {
       datas
     },
-    revalidate: 60 * 60 * 6     // 6 HOURS
+    revalidate: 60 * 60 * 8     // 8 HOURS
   }
 }

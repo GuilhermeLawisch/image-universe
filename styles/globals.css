@@ -27,13 +27,9 @@ h1 {
   color: rgba(255, 255, 255, 1);
 }
 
-a {
-  height: 65vh;
-}
-
 .image {
   margin: auto;
-  border-radius: 10em / 7em;
+  border-radius: 5em / 3.5em;
 }
 
 p,
